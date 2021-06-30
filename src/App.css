@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.links {
+  display: grid;
+  grid-template-columns: 1fr .65fr .8fr 1fr 6fr;
+  margin-bottom: 20px;
+}
+
+#logout {
+  text-align: end;
+}
+
+#todos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

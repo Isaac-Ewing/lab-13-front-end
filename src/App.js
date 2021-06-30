@@ -32,12 +32,12 @@ export default class App extends React.Component {
     render() {
       return (
         <Router>
-          <div>
+          <div className='links'>
             <Link to='/'>Home Page</Link>
             <Link to='/login'>Login</Link>
             <Link to='/signup'>Sign Up</Link>
             <Link to='/todolist'>Todo Page</Link>
-            <Link to='/'><span onClick={this.logout}>Logout</span></Link>
+            <Link to='/' id='logout'><span onClick={this.logout}>Logout</span></Link>
           </div>
           <Switch>
             <Route path='/' exact render={(routerProps) => <HomePage {...routerProps} />} />

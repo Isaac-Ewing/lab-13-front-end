@@ -28,21 +28,32 @@ export default class TodoPage extends React.Component {
     }
 
     render() {
+        const done = this.state.todos.filter(todo => todo.completed);
+        const notDone = this.state.todos.filter(todo => !(todo.completed));
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Name<input onChange={this.handleTodoNameChange}/></label>
-                    <button>Add Todo</button>
+                    <label>Todo: <input onChange={this.handleTodoNameChange}/></label>
+                    <button>Add</button>
                 </form>
-                <div>
+                <div id='todos'>
+                    <div id='notDone'>
+                    <p><u>Not Done</u></p>
                     {
-                        this.state.todos.map(todo => 
-                        <p className={ todo.completed ? 'done' : 'not-done'} key={`${todo.todo}${todo.id}`} 
+                        notDone.map(todo => 
+                        <p className='notDone' key={`${todo.todo}${todo.id}`} 
                             onClick={async () => {
                                 await completeTodo(todo.id, this.props.token)
                                 await this.fetch()
                             }}>{todo.todo}</p>)
                     }
+                    </div>
+                    <div>
+                    <p><u>Done</u></p>
+                    {
+                        done.map(todo => <p className='done' key={`${todo.todo}${todo.id}`} >{todo.todo}</p>)
+                    }
+                    </div>
                 </div>
             </div>
         )
